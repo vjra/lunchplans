@@ -1,0 +1,65 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="home">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"><h3>Location</h3></th>
+      <th scope="col"><h3>Menu: {{weekdayname}}, {{date}}</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row"><h2><a href="https://www.nam-nam.at/dabba/">Dabba</a></h2>
+      </th>
+      <td>
+        {% if pandas_cutting_switch == True %}
+            <center><p>{{ dabba_weekmenu }}</p></center>
+            {% for table in tables %}
+              {{ table|safe }}
+              {% endfor %}
+        {% else %}
+        <img src="{{url_for('static', filename='dabba_cuttings/{}{}.png'.format(currentday,0))}}"  alt="Dabba M1" style="width:342px;height:56px;">
+        <img src="{{url_for('static', filename='dabba_cuttings/{}{}.png'.format(currentday,1))}}"  alt="Dabba M2" style="width:342px;height:56px;">
+        <img src="{{url_for('static', filename='dabba_cuttings/{}{}.png'.format(currentday,2))}}"  alt="Dabba M3" style="width:342px;height:56px;">
+        {% endif %}
+      </td>
+    </tr>
+    <tr class="table-active">
+    <th scope="row"><h2><a href="http://teigware.at/">Teigware</a></h2> <p>M1: € 6,10, M2: € 7,10</p></th>
+      <td> <ul>
+        <li> MO {{ teig0 }} </li>
+        <li> TUE {{ teig1 }}</li>
+        <li> WED {{ teig2 }}</li>
+        <li> THU {{ teig3 }}</li>
+        <li> FRI {{ teig4 }}</li></ul></td>
+    </tr>
+
+    <tr class="table-active">
+      <th scope="row"><h2><a href="http://www.feinessen.at/"> Fein essen</a></h2></th>
+      <td>   <ul>
+        <li> MO {{ feinessen0 }} </li>
+        <li> TUE {{ feinessen1 }}</li>
+        <li> WED {{ feinessen2 }}</li>
+        <li> THU {{ feinessen3 }}</li>
+        <li> FRI {{ feinessen4 }}</li></ul></td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row"><h2><a href="https://www.bep-viet.at/">Beb Viet</a></h2><p>Week menu</p></th>
+      <td> <ul>
+        <li> {{ beb0 }} </li>
+        <li> {{ beb1 }}</li>
+        <li> {{beb2 }}</li>
+        <li> {{ beb3 }}</li>
+        <li> {{ beb4 }}</li></ul></td>
+
+    </tr>
+    <!-- <tr class="table-active">
+      <th scope="row"><h2><a href="https://salonwichtig.at/Salon">Salon Wichtig</a></h2></th>
+      <td><iframe src="http://docs.google.com/gview?url=https://salonwichtig.at/wp-content/uploads/2019/02/Wochen-Menu%CC%88-Plan.numbers-KW-8.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe></td>
+    </tr> -->
+
+  </tbody>
+</table>
+</div>
+{%endblock%}
