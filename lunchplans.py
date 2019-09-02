@@ -159,7 +159,7 @@ def home():
     # looks up the time, how long dabba.jpg was not modified
     # if its longer then 6 days, it downloads
     try:
-        if difftime >=0:
+        if difftime >=6:
             date2 = date.replace('-','_')
             os.remove('dabba.pdf')
             fileurl = 'https://nam-nam.at/wp-content/uploads/Wochenkarten/Nam-Nam-Wochenkarte-Dabba.pdf'
@@ -259,6 +259,7 @@ def home():
     version = 'v0.05'
     currentweekday = datetime.today().weekday()
     templateData = {
+    'pandas_cutting_switch' : pandas_cutting_switch,
     'currentday' : currentweekday,
     'weekdayname':weekdayname,
     'date': date,
