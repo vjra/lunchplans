@@ -1,5 +1,16 @@
 # lunchplans
 
+lunchplans is a small web-crawler/heroku app prototype that looks up the lunch menues at several restaurants near the TU Wien. In particular, it checks the following websites
+
+* https://nam-nam.at/wp-content/uploads/Wochenkarten/Nam-Nam-Wochenkarte-Dabba.pdf
+* http://www.feinessen.at/
+* https://www.bep-viet.at/
+* http://teigware.at
+
+and presents the menues on a simple [website](https://lunchplans.herokuapp.com).
+
+This repository serves as illustration of simple, hard coded, web crawling.
+
 ## Installation
 
 ## Usage
