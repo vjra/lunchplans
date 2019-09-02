@@ -11,7 +11,28 @@ and presents the menues on a simple [website](https://lunchplans.herokuapp.com).
 
 This repository serves as illustration of simple, hard coded, web crawling.
 
-## Installation
+## Features:
+
+* Uses the simply web framework [flask](https://palletsprojects.com/p/flask/) to generate a dynamic webpage.
+* Uses [camelot](https://camelot-py.readthedocs.io/en/master/) to extract information of a table in pdf and saves it into a pandas data frame. If this fails, it grabs a jpg with the same information, provided by the website, and uses [PIL](https://en.wikipedia.org/wiki/Python_Imaging_Library) to slice it into the menus for a day.
+* Uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to extract information from an html page.
+
+## Installation on heroku:
+
+* Get a heroku account.
+* Use the information provided [here](https://stackoverflow.com/questions/49469764/how-to-use-opencv-with-heroku/51004957) to install [OpenCV](https://opencv.org/) on heroku.
+* Follow the heroku deployment procedure:
+* 
+```sh
+$ heroku login
+$ heroku create (if not already created)
+$ git init
+$ virtual/bin/pip3 freeze > requirements.txt
+$ git add .
+$ git commit -m "comment"
+$ git push heroku master
+```
+## Installation on local pc:
 
 ## Usage
 
