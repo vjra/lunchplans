@@ -33,8 +33,8 @@ $ git add .
 $ git commit -m "comment"
 $ git push heroku master
 ```
-## Installation on local pc:
-Open a terminal and change directory to the your preferred installation folder.
+## Local installation:
+Open a terminal and change directory to your preferred installation folder.
 
 ```sh
 $ git clone https://github.com/vjra/lunchplans.git
@@ -42,7 +42,7 @@ $ git clone https://github.com/vjra/lunchplans.git
 $ pip3 install -r requirements.txt
 $ python3 lunchplans.py
 ```
-The website runs then locally on http://127.0.0.1:5000/.
+After execution, you find that the website runs locally on http://127.0.0.1:5000/.
 
 ## Known issues.
 
