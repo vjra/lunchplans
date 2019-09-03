@@ -44,8 +44,14 @@ $ python3 lunchplans.py
 ```
 The website runs then locally on http://127.0.0.1:5000/.
 
-## Heroku deployment: Known issues.
+## Known issues.
 
-* If build process on heroku does not work out, look into requirements.txt if a package with version number 0.0.0 is inside and delete it.
+### In general:
+
+
+### Heroku deployment:
+
+* If the build process on heroku does not work out, look into requirements.txt for a package with version number 0.0.0 and delete it.
 * Apt-file: In order to use [OpenCV](https://opencv.org/) on heroku, follow the instructions [here](https://stackoverflow.com/questions/49469764/how-to-use-opencv-with-heroku/51004957).
+
 
