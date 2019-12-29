@@ -1,6 +1,7 @@
 # lunchplans
 
-lunchplans is a small web-crawler/heroku app prototype that looks up the lunch menus at several restaurants near the TU Wien. In particular, it checks the following websites
+lunchplans is a small web-scraper/heroku app prototype that looks up the lunch menus at several restaurants near the TU Wien. 
+In particular, it checks the following websites
 
 * https://nam-nam.at
 * http://www.feinessen.at/
@@ -9,7 +10,7 @@ lunchplans is a small web-crawler/heroku app prototype that looks up the lunch m
 
 and presents the menus on a simple [website](https://lunchplans.herokuapp.com).
 
-This repository serves as illustration of simple, hard coded, web crawling.
+This repository serves as illustration of simple, hard coded, web scraping.
 
 ## Features:
 
