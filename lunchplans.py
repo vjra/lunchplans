@@ -51,6 +51,7 @@ def dabba_clean_export(url,filename='dabba.pdf',datestamp = ''):
     ############################################################################
 
     df = pd.DataFrame(table[0].df)
+
     df.drop([0,2,4,7,10,13,16],axis=0, inplace = True)
     df.reset_index(drop = True,inplace = True)
     df.drop(0,axis=1, inplace = True)
@@ -62,7 +63,6 @@ def dabba_clean_export(url,filename='dabba.pdf',datestamp = ''):
     df.reset_index(drop = True,inplace = True)
     df.iloc[1:,:] = df.iloc[1:,:].applymap(lambda x: x.replace('-',''))
     df_clean = df.copy()
-
     df_clean.index = ['Weekmenu','Mo','Tue','Wed','Thu','Fr']
     df_clean.columns = ['M1','M2','M3']
 
@@ -165,21 +165,30 @@ def home():
             fileurl = 'https://nam-nam.at/wp-content/uploads/Wochenkarten/Nam-Nam-Wochenkarte-Dabba.pdf'
             dabba_clean_export(fileurl,'dabba.pdf',datestamp = date2)
 
+
         df_dabba = pd.read_csv('./datasets/df_clean_actual.csv')
         dabba_weekmenu = df_dabba['M1'][0]
         df_dabba_m = df_dabba.iloc[1:,:].copy()
         df_dabba_m.index = ['Mo','Tue','Wed','Thu','Fr']
         pandas_cutting_switch = True
-    except:
+    except Exception as e:
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        print('#'*100)
+        print("Unexpected error in dabba:")
+        print(e)
+        print(exc_type, exc_value, exc_traceback)
+        print('#'*100)
         os.remove('dabba.jpg')
         fileurl = 'https://nam-nam.at/wp-content/uploads/Wochenkarten/Nam-Nam-Wochenkarte-Dabba.jpg'
         filedownloado(fileurl,'dabba.jpg')
         dabbajpgcutter()
         pandas_cutting_switch = False
-        print("Unexpected error:", sys.exc_info()[0])
+
+
         dabba_weekmenu = 'dabba week menu'
         df_dabba_m = pd.DataFrame(columns=['something', 'went', 'wrong'])
         df_dabba = df_dabba_m
+
 
     ############################################################################
     ############################## Feinessen scraping ##########################
@@ -201,9 +210,14 @@ def home():
             if j % 3==0:
                 feinessenmenu.append(feinessentemp)
                 feinessentemp = ''
-    except:
+    except Exception as e:
         feinessenmenu = []
-        print("Unexpected error:", sys.exc_info()[0])
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        print('#'*100)
+        print("Unexpected error in feinessen:")
+        print(e)
+        print(exc_type, exc_value, exc_traceback)
+        print('#'*100)
         for i in range(0,5):
             feinessenmenu.append('Kein Eintrag')
 
@@ -221,9 +235,17 @@ def home():
         for i in h4s:
             beblist.append(i.text+divs[j].text)
             j+=1
-    except:
+        # quick fix to check if 4
+        if len(beblist) != 4:
+            raise IndexError('Bebviet list is not established.')
+    except Exception as e:
         beblist = []
-        print("Unexpected error:", sys.exc_info()[0])
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        print('#'*100)
+        print("Unexpected error in bebviet:")
+        print(e)
+        print(exc_type, exc_value, exc_traceback)
+        print('#'*100)
         for i in range(0,5):
             beblist.append('Kein Eintrag')
 
@@ -247,12 +269,18 @@ def home():
                 teigwaretemp = teigwaretemp + ' M2: ' +divs[i].text
             else:
                 teigwaretemp = 'M1: ' + divs[i].text
-    except:
+    except Exception as e:
         teigware = []
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        print('#'*100)
+        print("Unexpected error in teigware:")
+        print(e)
+        print(exc_type, exc_value, exc_traceback)
+        print('#'*100)
         for i in range(0,5):
             teigware.append('Kein Eintrag')
 
-        print("Unexpected error:", sys.exc_info()[0])
+
     ############################################################################
     ##################### Generate template data for html ######################
     ############################################################################
